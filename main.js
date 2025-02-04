@@ -1,33 +1,40 @@
-let age=document.getElementById("age");
-let long=document.getElementById("long");
-let clul=document.getElementById("clul");
-let di=document.getElementById("di")
-clul.onclick=function(){
-    let w=clu();
-    if(w<18){
-     
-       document.getElementById("di").innerHTML="نحافة "
-       document.getElementById("di").style.color="blue"
-    }else if(w>=18 && w<=24.9){
-             document.getElementById("di").innerHTML="وزن مثالي "
-             document.getElementById("di").style.color="#008000"
-    }else if(w>=25 && w<=29.9){
-        document.getElementById("di").innerHTML="وزن زائد "
-        document.getElementById("di").style.color=  "rgb(102, 156, 102)"
-}else if(w>=30 && w<=34.9){
-    document.getElementById("di").innerHTML="سمنة من الدرجة الاولى "
-    document.getElementById("di").style.color="rgb(152, 52, 52)"
-}else if(w>=35 && w<=39.9){
-    document.getElementById("di").innerHTML="سمنة من الدرجة الثانية "
-    document.getElementById("di").style.color="rgb(208, 28, 28)"
-}else{
-document.getElementById("di").innerHTML="سمنة خطيرة"
-document.getElementById("di").style.color="red"
-}
-}
-function clu(){
+let weight = document.getElementById("weight");
+let height = document.getElementById("height");
+let btuCalculateBMI = document.getElementById("calculateBMI");
+let PResult = document.getElementById("result");
+btuCalculateBMI.onclick = function () {
+  if (calculateBMI() < 18 && calculateBMI() > 0) {
+    PResult.innerHTML = "نحافة ";
+    PResult.style.color = "blue";
+  } else if (calculateBMI() >= 18 && calculateBMI() <= 24.9) {
+    PResult.innerHTML = "وزن مثالي ";
+    PResult.style.color = "#008000";
+  } else if (calculateBMI() >= 25 && calculateBMI() <= 29.9) {
+    PResult.innerHTML = "وزن زائد ";
+    PResult.style.color = "rgb(102, 156, 102)";
+  } else if (calculateBMI() >= 30 && calculateBMI() <= 34.9) {
+    PResult.innerHTML = "سمنة من الدرجة الاولى ";
+    PResult.style.color = "rgb(152, 52, 52)";
+  } else if (calculateBMI() >= 35 && calculateBMI() <= 39.9) {
+    PResult.innerHTML = "سمنة من الدرجة الثانية ";
+    PResult.style.color = "rgb(208, 28, 28)";
+  } else if (calculateBMI() > 39.9) {
+    PResult.innerHTML = "سمنة خطيرة";
+    PResult.style.color = "red";
+  } else {
+    alert(".الرجاء إدخال القيم الصحيحة ");
+  }
+};
 
-    ret=document.getElementById("age").value/(document.getElementById("long").value*document.getElementById("long").value);
-    
-    return ret;
+// const calculateBMI = () => weight.value / (height.value * height.value);
+function calculateBMI() {
+  if (
+    weight.value === "" ||
+    height.value === "" ||
+    height <= 0 ||
+    weight <= 0
+  ) {
+    return 0;
+  }
+  return weight.value / (height.value * height.value);
 }
